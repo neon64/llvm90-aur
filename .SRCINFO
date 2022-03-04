@@ -1,7 +1,7 @@
 pkgbase = llvm90
 	pkgdesc = LLVM compiler toolchain, version 9.0.1
 	pkgver = 9.0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
@@ -15,7 +15,8 @@ pkgbase = llvm90
 	depends = python2
 	options = staticlibs
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/llvm-9.0.1.src.tar.xz
+	source = add_limits_header.patch
 	sha256sums = SKIP
+	sha256sums = c2904df572620b37750bd53edf7a099cb85ae8ab1c87a2c29e13923dbc526b99
 
 pkgname = llvm90
-
