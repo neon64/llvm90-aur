@@ -3,15 +3,21 @@
 pkgname=llvm90
 pkgdesc="LLVM compiler toolchain, version 9.0.1"
 pkgver=9.0.1
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
 depends=('libedit' 'libxml2' 'python2')
 makedepends=('cmake' 'libffi' 'libedit' 'ncurses' 'libxml2')
 options=('staticlibs')
-source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-$pkgver.src.tar.xz)
-sha256sums=('SKIP')
+source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-$pkgver.src.tar.xz add_limits_header.patch)
+sha256sums=('SKIP'
+            'c2904df572620b37750bd53edf7a099cb85ae8ab1c87a2c29e13923dbc526b99')
+
+prepare() {
+  cd "$srcdir/llvm-$pkgver.src"
+  patch --strip=1 --input=${srcdir}/add_limits_header.patch
+}
 
 build() {
   mkdir "$srcdir/llvm-$pkgver.src/build"
